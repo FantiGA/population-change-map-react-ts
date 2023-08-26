@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "axios": "latest",
+    "highcharts": "latest",
+    "highcharts-react-official": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "latest",

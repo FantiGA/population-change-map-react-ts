@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 /** Import HTML plugin / 引入HTML插件 */
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -6,10 +7,10 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 /** Introduce the clean plugin / 引入clean插件 */
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-// const { SourceMapDevToolPlugin } = require('webpack')
+// const { SourceMapDevToolPlugin } = require("webpack")
 
 const config = {
-  /** Specify the packaging method: 'none' | 'development' | 'production' / 指定打包模式 */
+  /** Specify the packaging method: "none" | "development" | "production" / 指定打包模式 */
   mode: "development",
   devServer: {
     historyApiFallback: true,
@@ -36,7 +37,7 @@ const config = {
     /** Specifies the rules to load / 指定要加载的规则 */
     rules: [
       {
-        /** 'test' specifies the file in which the rule takes effect / 'test'指定的是规则生效的文件 */
+        /** "test" specifies the file in which the rule takes effect / "test"指定的是规则生效的文件 */
         test: /\.js$|jsx/,
         /** Loader to use / 要使用的loader */
         use: ["babel-loader", "source-map-loader"],
@@ -70,7 +71,7 @@ const config = {
                     },
                     /** Specify the version of corejs / 指定corejs的版本 */
                     corejs: "3",
-                    /** The way to use corejs, 'usage' means loading on demand / 使用corejs的方式，'usage'表示按需加载 */
+                    /** The way to use corejs, "usage" means loading on demand / 使用corejs的方式，"usage"表示按需加载 */
                     useBuiltIns: "usage",
                   },
                 ],
@@ -111,11 +112,14 @@ const config = {
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@components": path.resolve(__dirname, "./src/components"),
-      '@utils': path.resolve(__dirname, './src/utils'),
+      "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
   /** Configure the webpack plugin / 配置webpack插件 */
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       // title: "",
@@ -128,12 +132,12 @@ const config = {
         removeComments: true,
       },
       /** Import ico file / 导入ico文件 */
-      favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
+      favicon: path.resolve(__dirname, "public", "favicon.ico"),
       /** Import the manifest file / 导入manifest文件 */
-      // manifest: path.resolve(__dirname, 'public', 'manifest.json'),
+      // manifest: path.resolve(__dirname, "public", "manifest.json"),
     }),
     // new SourceMapDevToolPlugin({
-    //     filename: '[file].map',
+    //     filename: "[file].map",
     // }),
   ],
   /** Performance Tips / 性能提示 */

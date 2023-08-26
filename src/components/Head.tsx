@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 19:29:31
- * @LastEditTime: 2023-08-26 19:53:53
+ * @LastEditTime: 2023-08-26 21:05:33
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Head.tsx
  */
@@ -20,6 +20,6 @@ const HeadUI = styled.h1`
   border-bottom: 1px solid #252525;
 `;
 
-const Head: FC = () => <HeadUI>都道府県別の総人口推移グラフ</HeadUI>;
+const Head: FC = () => <HeadUI>総人口推移グラフ</HeadUI>;
 
 export default Head;
