@@ -1,13 +1,15 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 18:38:38
- * @LastEditTime: 2023-08-26 18:44:43
+ * @LastEditTime: 2023-08-26 19:45:18
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/index.tsx
  */
 
 import { createRoot } from 'react-dom/client';
 import App from './App';
+
+import "./index.css";
 
 /**
  * React 18 新写法
