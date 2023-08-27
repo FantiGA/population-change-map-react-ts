@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 19:29:31
- * @LastEditTime: 2023-08-26 21:05:33
+ * @LastEditTime: 2023-08-27 17:54:49
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Head.tsx
  */
@@ -18,6 +18,11 @@ const HeadUI = styled.h1`
   text-align: center;
   color: #252525;
   border-bottom: 1px solid #252525;
+
+  @media (prefers-color-scheme: dark) {
+    color: rgba(255, 255, 255, .87);
+    border-bottom: 1px solid #ffffff;
+  }
 `;
 
 const Head: FC = () => <HeadUI>総人口推移グラフ</HeadUI>;

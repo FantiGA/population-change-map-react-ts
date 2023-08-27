@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 22:06:24
- * @LastEditTime: 2023-08-27 13:53:58
+ * @LastEditTime: 2023-08-27 17:53:51
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Prefecture.tsx
  */
@@ -19,6 +19,11 @@ const TitleUI = styled.h2`
   padding: 2px 5px;
   border: 1px solid #252525;
   border-radius: 5px;
+
+  @media (prefers-color-scheme: dark) {
+    color: rgba(255, 255, 255, .6);
+    border: 1px solid #ffffff;
+  }
 `;
 
 const FormUI = styled.section`

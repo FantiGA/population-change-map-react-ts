@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 20:18:19
- * @LastEditTime: 2023-08-27 17:41:12
+ * @LastEditTime: 2023-08-27 18:18:17
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Chart.tsx
  */
@@ -11,6 +11,8 @@ import Highcharts, { Options, SeriesOptionsType } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { FC, memo, useMemo } from "react";
 import { styled } from "styled-components";
+
+import "@/styles/highcharts.css";
 
 const HighchartsUI = styled.section`
   margin: 1em;
@@ -32,7 +34,7 @@ const Chart: FC<ChartProps> = ({ populationData, dimension, setDimension }) => {
   const categories: string[] = [];
 
   for (const value of populationData) {
-    const tempData = [];
+    const tempData: number[] = [];
 
     for (const item of value.data[dimension].data) {
       tempData.push(item.value);
@@ -71,6 +73,9 @@ const Chart: FC<ChartProps> = ({ populationData, dimension, setDimension }) => {
       layout: "vertical",
       align: "right",
       verticalAlign: "top"
+    },
+    chart: {
+      styledMode: true,
     },
     series: seriesData.length === 0 ? [{ type: "line", name: "", data: [], }] : seriesData,
   }), [categories, seriesData]);
