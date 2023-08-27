@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 20:18:19
- * @LastEditTime: 2023-08-27 18:18:17
+ * @LastEditTime: 2023-08-27 19:56:26
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Chart.tsx
  */
@@ -30,15 +30,22 @@ const LabelUI = styled.label`
 `;
 
 const Chart: FC<ChartProps> = ({ populationData, dimension, setDimension }) => {
+  /** Series data / シリーズデータ / 系列数据 */
   const seriesData: SeriesOptionsType[] = [];
+  /** categories / カテゴリ / 类别 */
   const categories: string[] = [];
 
   for (const value of populationData) {
     const tempData: number[] = [];
 
+    /**
+     * When the dimension changes, put the data of different dimensions into the series data.
+     * ディメンションが変わる場合は、系列データに異なるディメンションのデータを入れる。
+     * 当维度变化时，将不同维度的数据放入系列数据里。
+     */
     for (const item of value.data[dimension].data) {
       tempData.push(item.value);
-      categories.push((item.year).toString());
+      categories.push(item.year.toString());
     }
 
     seriesData.push({
@@ -48,6 +55,11 @@ const Chart: FC<ChartProps> = ({ populationData, dimension, setDimension }) => {
     });
   }
 
+  /**
+   * Dynamically generate options configuration
+   * オプション構成を動的に生成する
+   * 动态生成options配置
+   */
   const options: Options = useMemo(() => ({
     title: {
       text: "都道府県別",
