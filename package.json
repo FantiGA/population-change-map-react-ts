@@ -9,7 +9,8 @@
   "description": "",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +47,9 @@
   "devDependencies": {
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@types/jest": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
@@ -59,12 +63,15 @@
     "eslint-plugin-jsx-a11y": "latest",
     "eslint-plugin-prettier": "latest",
     "html-webpack-plugin": "latest",
+    "jest-environment-jsdom": "latest",
     "postcss": "latest",
     "postcss-loader": "latest",
     "postcss-preset-env": "latest",
     "prettier": "latest",
     "source-map-loader": "latest",
     "style-loader": "latest",
+    "ts-jest": "latest",
+    "ts-node": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-merge": "latest"
