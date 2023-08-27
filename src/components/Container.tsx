@@ -1,18 +1,18 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 21:16:07
- * @LastEditTime: 2023-08-26 22:22:24
+ * @LastEditTime: 2023-08-27 17:12:03
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Container.tsx
  */
 
 import axios from "@/utils/axios";
-import { FC, useEffect, useState } from "react";
+import { ChangeEventHandler, FC, useCallback, useEffect, useState } from "react";
 import Head from "./Head";
 import Chart from "./Chart";
 import styled from "styled-components";
 import Prefecture from "./Prefecture";
-import { PrefectureResults } from "@/types";
+import { PopulationResults, PrefectureResults } from "@/types";
 
 const ContainerUI = styled.div`
   display: flex;
@@ -20,7 +20,29 @@ const ContainerUI = styled.div`
 `;
 
 const Container: FC = () => {
-  const [prefectures, setPrefectures] = useState<PrefectureResults[]>([]);
+  const [prefectureList, setPrefectureList] = useState<PrefectureResults[]>([]);
+  const [populationData, setPopulationData] = useState<PopulationResults[]>([]);
+  const [dimension, setDimension] = useState<number>(0);
+
+  const handlePrefecturesChange: ChangeEventHandler<HTMLInputElement> = useCallback(({ target: { value, checked, dataset: { name } } }) => {
+    const newData: PopulationResults[] = [...populationData];
+    if (checked) {
+      axios
+        .get("/population/composition/perYear", { params: { prefCode: value } })
+        .then(({ data: { result: { data } } }) => {
+          newData.push({
+            id: Number(value),
+            name: name ?? "",
+            data,
+          });
+          setPopulationData(newData);
+        })
+        .catch((error) => console.error("Error: " + error));
+    } else {
+      newData.splice(newData.findIndex(obj => obj.id === Number(value)), 1);
+      setPopulationData(newData);
+    };
+  }, [populationData]);
 
   /**
    * Get prefecture data
@@ -29,9 +51,9 @@ const Container: FC = () => {
    */
   useEffect(() => {
     axios
-      .get("https://opendata.resas-portal.go.jp/api/v1/prefectures")
+      .get("/prefectures")
       .then(({ data: { result } }) => {
-        setPrefectures(result);
+        setPrefectureList(result);
       })
       .catch((error) => console.error("Error: " + error));
   }, []);
@@ -39,8 +61,15 @@ const Container: FC = () => {
   return (
     <ContainerUI>
       <Head />
-      <Prefecture prefectures={prefectures} />
-      <Chart />
+      <Prefecture
+        prefectureList={prefectureList}
+        handlePrefecturesChange={handlePrefecturesChange}
+      />
+      <Chart
+        populationData={populationData}
+        dimension={dimension}
+        setDimension={setDimension}
+      />
     </ContainerUI>
   );
 };

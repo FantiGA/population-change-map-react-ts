@@ -1,13 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 22:06:24
- * @LastEditTime: 2023-08-26 23:59:26
+ * @LastEditTime: 2023-08-27 13:53:58
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Prefecture.tsx
  */
 
 import { PrefectureProps } from "@/types";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { styled } from "styled-components";
 
 const TitleUI = styled.h2`
@@ -23,7 +23,7 @@ const TitleUI = styled.h2`
 
 const FormUI = styled.section`
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   padding: 0 1em;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -33,19 +33,26 @@ const LabelUI = styled.label`
   width: 5.5em;
 `;
 
-const Prefecture: FC<PrefectureProps> = ({ prefectures }) => {
-  return (
-    <>
-      <TitleUI>都道府県</TitleUI>
-      <FormUI>
-        {
-          prefectures.map((value, index) => (
-            <LabelUI key={index}><input type="checkbox" name="prefectures" value={value.prefCode}></input><span>{value.prefName}</span></LabelUI>
-          ))
-        }
-      </FormUI>
-    </>
-  );
-};
+const Prefecture: FC<PrefectureProps> = ({ prefectureList, handlePrefecturesChange }) => (
+  <>
+    <TitleUI>都道府県</TitleUI>
+    <FormUI>
+      {
+        prefectureList.map((value, index) => (
+          <LabelUI key={index}>
+            <input
+              type="checkbox"
+              name="prefectures"
+              value={value.prefCode}
+              data-name={value.prefName}
+              onChange={handlePrefecturesChange}
+            />
+            <span>{value.prefName}</span>
+          </LabelUI>
+        ))
+      }
+    </FormUI>
+  </>
+);
 
-export default Prefecture;
+export default memo(Prefecture);
