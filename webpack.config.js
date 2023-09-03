@@ -11,7 +11,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const config = {
   /** Specify the packaging method: "none" | "development" | "production" / 指定打包模式 */
-  mode: "development",
+  mode: "production",
   devServer: {
     historyApiFallback: true,
   },

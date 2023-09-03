@@ -9,7 +9,7 @@
   "description": "",
   "scripts": {
     "start": "dotenv -e .env webpack serve",
-    "build": "webpack",
+    "build": "dotenv -e .env webpack",
     "test": "jest --maxWorkers=50% --coverage",
     "test:watch": "jest --watch --maxWorkers=25%",
     "test:ci": "jest --runInBand"

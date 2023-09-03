@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 22:06:24
- * @LastEditTime: 2023-09-03 15:15:16
+ * @LastEditTime: 2023-09-03 16:46:04
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Prefecture.tsx
  */
@@ -12,9 +12,10 @@ import { styled } from "styled-components";
 
 const TitleUI = styled.h2`
   font-size: 1.2em;
+  text-align: center;
   color: #252525;
   display: inline-block;
-  width: 4em;
+  width: 4.5em;
   margin: 1em;
   padding: 2px 5px;
   border: 1px solid #252525;
