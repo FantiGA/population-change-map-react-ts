@@ -1,13 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 22:06:24
- * @LastEditTime: 2023-08-27 17:53:51
+ * @LastEditTime: 2023-09-03 15:15:16
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Prefecture.tsx
  */
 
-import { PrefectureProps } from "@/types";
-import { FC, memo } from "react";
+import React, { FC, memo } from "react";
+import { PrefectureProps } from "../types";
 import { styled } from "styled-components";
 
 const TitleUI = styled.h2`
@@ -43,7 +43,7 @@ const Prefecture: FC<PrefectureProps> = ({ prefectureList, handlePrefecturesChan
     <TitleUI>都道府県</TitleUI>
     <FormUI>
       {
-        prefectureList.map((value, index) => (
+        prefectureList && prefectureList.map((value, index) => (
           <LabelUI key={index}>
             <input
               type="checkbox"

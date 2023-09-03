@@ -1,18 +1,18 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 21:16:07
- * @LastEditTime: 2023-08-27 19:41:19
+ * @LastEditTime: 2023-09-03 00:50:02
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Container.tsx
  */
 
-import axios from "@/utils/axios";
-import { ChangeEventHandler, FC, useCallback, useEffect, useState } from "react";
+import React, { ChangeEventHandler, FC, useCallback, useEffect, useState } from "react";
+import axios from "../utils/axios";
 import Head from "./Head";
 import Chart from "./Chart";
 import styled from "styled-components";
 import Prefecture from "./Prefecture";
-import { PopulationResults, PrefectureResults } from "@/types";
+import { PopulationResults, PrefectureResults } from "../types";
 
 const ContainerUI = styled.div`
   display: flex;

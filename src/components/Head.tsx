@@ -1,12 +1,12 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 19:29:31
- * @LastEditTime: 2023-08-27 17:54:49
+ * @LastEditTime: 2023-09-02 15:50:20
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Head.tsx
  */
 
-import { FC } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 const HeadUI = styled.h1`

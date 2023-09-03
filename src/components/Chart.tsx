@@ -1,18 +1,18 @@
 /*
  * @Author: fantiga
  * @Date: 2023-08-26 20:18:19
- * @LastEditTime: 2023-08-27 19:56:26
+ * @LastEditTime: 2023-09-03 00:52:32
  * @LastEditors: fantiga
  * @FilePath: /population-change-map-react-ts/src/components/Chart.tsx
  */
 
-import { ChartProps } from "@/types";
+import React, { FC, memo, useMemo } from "react";
+import { ChartProps } from "../types";
 import Highcharts, { Options, SeriesOptionsType } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { FC, memo, useMemo } from "react";
 import { styled } from "styled-components";
 
-import "@/styles/highcharts.css";
+import "../styles/highcharts.css";
 
 const HighchartsUI = styled.section`
   margin: 1em;
